@@ -1,0 +1,331 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-light: #818cf8;
+    --text-color: #2d3748;
+    --subtext-color: #718096;
+    --background-color: #f8fafc;
+    --card-color: #ffffff;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --warning-color: #f59e0b;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.container {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 420px;
+    padding: var(--spacing-xl);
+    position: relative;
+}
+
+.step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.icon-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(99, 102, 241, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.icon-container i {
+    font-size: 32px;
+    color: var(--primary-color);
+}
+
+.icon-container.success {
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.icon-container.success i {
+    color: var(--success-color);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.alert-box {
+    display: flex;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-left: 4px solid var(--error-color);
+}
+
+.alert-box i {
+    color: var(--error-color);
+    font-size: 18px;
+    margin-right: var(--spacing-sm);
+}
+
+.alert-box p {
+    font-size: 14px;
+    flex: 1;
+}
+
+.benefits-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.benefits-container h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.benefits-container ul {
+    list-style-type: none;
+}
+
+.benefits-container li {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    font-size: 14px;
+    color: var(--subtext-color);
+}
+
+.benefits-container li i {
+    color: var(--success-color);
+    margin-right: var(--spacing-sm);
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: var(--spacing-sm);
+    transition: background-color 0.2s ease;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-light);
+}
+
+.primary-btn:disabled {
+    background-color: var(--subtext-color);
+    cursor: not-allowed;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--subtext-color);
+    border: none;
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.secondary-btn:hover {
+    color: var(--text-color);
+}
+
+.description {
+    text-align: center;
+    color: var(--subtext-color);
+    margin-bottom: var(--spacing-lg);
+    font-size: 14px;
+}
+
+.input-container {
+    margin-bottom: var(--spacing-lg);
+}
+
+input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius-sm);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.error-text {
+    color: var(--error-color);
+    font-size: 12px;
+    margin-top: var(--spacing-xs);
+    min-height: 18px;
+}
+
+.status-container {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-lg);
+    font-size: 14px;
+    text-align: center;
+    display: none;
+}
+
+.status-container.pending {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+    display: block;
+}
+
+.status-container.success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+    display: block;
+}
+
+.status-container.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--error-color);
+    display: block;
+}
+
+.success-details {
+    background-color: rgba(99, 102, 241, 0.05);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.success-details p {
+    margin-bottom: var(--spacing-sm);
+    font-size: 14px;
+}
+
+.success-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* Quickmart Payment Gateway Styles */
+.quickmart-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+.quickmart-image {
+    width: 100%;
+    max-width: 380px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.13);
+    border: 2.5px solid var(--primary-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: var(--spacing-lg);
+}
+.quickmart-image:hover {
+    transform: scale(1.06) rotate(-2deg);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.18);
+}
+.gateway-description {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.2px;
+    animation: fadeIn 0.6s;
+}
+.input-label {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+    margin-left: 2px;
+    letter-spacing: 0.1px;
+    animation: fadeIn 0.8s;
+}
+.input-container {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+.input-container input {
+    background: #f3f4f6;
+    border: 1.5px solid #e2e8f0;
+    border-radius: var(--border-radius-md);
+    padding-left: 44px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.12);
+    background: #fff;
+}
+/* removed phone icon for input */
+/* End Quickmart Styles */
+
+/* Loading spinner */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
