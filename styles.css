@@ -11,11 +11,13 @@
     --border-radius-sm: 8px;
     --border-radius-md: 12px;
     --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
     --spacing-xl: 32px;
+    --spacing-xxl: 40px;
 }
 
 * {
@@ -37,13 +39,26 @@ body {
 }
 
 .container {
-    background-color: var(--card-color);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     width: 100%;
     max-width: 420px;
     padding: var(--spacing-xl);
     position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(99, 102, 241, 0.05));
+    pointer-events: none;
 }
 
 .step {
@@ -139,22 +154,25 @@ h1 {
 }
 
 .primary-btn {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #4338ca 100%);
     color: white;
     border: none;
     width: 100%;
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 17px;
     cursor: pointer;
     margin-bottom: var(--spacing-sm);
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .primary-btn:hover {
-    background-color: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, #605df2 0%, #4338ca 100%);
 }
 
 .primary-btn:disabled {
@@ -163,16 +181,23 @@ h1 {
 }
 
 .secondary-btn {
-    background-color: transparent;
+    background-color: #f8fafc;
     color: var(--subtext-color);
-    border: none;
+    border: 1px solid #e2e8f0;
     width: 100%;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-xl);
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 16px;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    border-radius: var(--border-radius-lg);
+}
+
+.secondary-btn:hover {
+    background-color: #e2e8f0;
+    color: var(--text-color);
+    transform: translateY(-1px);
 }
 
 .secondary-btn:hover {
@@ -183,7 +208,10 @@ h1 {
     text-align: center;
     color: var(--subtext-color);
     margin-bottom: var(--spacing-lg);
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 500;
+    padding: 0 var(--spacing-md);
 }
 
 .input-container {
@@ -207,9 +235,19 @@ input:focus {
 
 .error-text {
     color: var(--error-color);
-    font-size: 12px;
+    font-size: 14px;
     margin-top: var(--spacing-xs);
-    min-height: 18px;
+    min-height: 22px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    background-color: rgba(239, 68, 68, 0.05);
+    animation: shake 0.5s ease-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 .status-container {
@@ -240,10 +278,12 @@ input:focus {
 }
 
 .success-details {
-    background-color: rgba(99, 102, 241, 0.05);
-    border-radius: var(--border-radius-sm);
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0.03) 100%);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .success-details p {
@@ -255,27 +295,45 @@ input:focus {
     margin-bottom: 0;
 }
 
-/* Quickmart Payment Gateway Styles */
-.quickmart-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: var(--spacing-lg);
+/* M-KopoSwiftLoans Styles */
+.brand-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg) 0;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.1);
 }
-.quickmart-image {
-    width: 100%;
-    max-width: 380px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.13);
-    border: 2.5px solid var(--primary-color);
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-bottom: var(--spacing-lg);
+.brand-header h1 {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
 }
-.quickmart-image:hover {
-    transform: scale(1.06) rotate(-2deg);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.18);
+.brand-subtitle {
+    color: var(--subtext-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.payment-info {
+    color: var(--primary-color);
+    font-size: 14px;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+    padding: var(--spacing-md);
+    background-color: rgba(99, 102, 241, 0.05);
+    border-radius: var(--border-radius-md);
+    animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .gateway-description {
     text-align: center;
@@ -288,11 +346,10 @@ input:focus {
 }
 .input-label {
     display: block;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     color: var(--text-color);
-    margin-bottom: var(--spacing-xs);
-    margin-left: 2px;
+    margin-bottom: var(--spacing-sm);
     letter-spacing: 0.1px;
     animation: fadeIn 0.8s;
 }
@@ -301,11 +358,30 @@ input:focus {
     margin-bottom: var(--spacing-lg);
 }
 .input-container input {
-    background: #f3f4f6;
-    border: 1.5px solid #e2e8f0;
-    border-radius: var(--border-radius-md);
-    padding-left: 44px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    background: #ffffff;
+    outline: none;
+}
+
+.input-container input::placeholder {
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+.input-container input:focus::placeholder {
+    color: #64748b;
 }
 .input-container input:focus {
     border-color: var(--primary-color);
@@ -313,17 +389,27 @@ input:focus {
     background: #fff;
 }
 /* removed phone icon for input */
-/* End Quickmart Styles */
+/* End M-KopoSwiftLoans Styles */
 
 /* Loading spinner */
 .spinner {
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     border-top-color: white;
     animation: spin 1s ease-in-out infinite;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.spinner.loading {
+    transform: scale(1.2);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
 @keyframes spin {

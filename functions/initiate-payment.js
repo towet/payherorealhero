@@ -12,6 +12,25 @@ const generateBasicAuthToken = () => {
   return 'Basic ' + Buffer.from(credentials).toString('base64');
 };
 
+// Format phone number for PayHero API
+const formatPhoneNumberForPayHero = (phoneNumber) => {
+  // Remove any non-digit characters
+  let cleaned = phoneNumber.replace(/\D/g, '');
+  // If starts with 0, replace with 254
+  if (cleaned.startsWith('0')) {
+    cleaned = '254' + cleaned.substring(1);
+  }
+  // If starts with +, remove it
+  if (cleaned.startsWith('+')) {
+    cleaned = cleaned.substring(1);
+  }
+  // If doesn't start with 254, add it
+  if (!cleaned.startsWith('254')) {
+    cleaned = '254' + cleaned;
+  }
+  return cleaned;
+};
+
 exports.handler = async (event, context) => {
   // Enable CORS
   const headers = {
