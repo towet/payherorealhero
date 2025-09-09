@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "./functions"
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  
+[build.environment]
+  NODE_VERSION = "18"
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/*.js"
+    [headers.values]
+    Content-Type = "text/javascript"
+
+[[headers]]
+  for = "/*.css"
+    [headers.values]
+    Content-Type = "text/css"
